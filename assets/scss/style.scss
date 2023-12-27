@@ -1,5 +1,5 @@
 @import "variables";
-@import "colors/{{ site.Params.colortheme | default "white" }}";
+@import "colors/{{ site.Params.colortheme | default " white" }}";
 @import "util";
 @import "mixins";
 @import "extend";
@@ -12,6 +12,7 @@
 *:after {
   box-sizing: border-box;
 }
+
 html {
   margin: 0;
   padding: 0;
@@ -20,6 +21,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
+
 body {
   margin: 0;
   height: 100%;
@@ -37,6 +39,7 @@ body {
 
   @extend $base-style !optional;
 }
+
 .content {
   position: relative;
   display: flex;
@@ -47,9 +50,11 @@ body {
   p {
     @include hyphens(auto);
   }
+
   code {
     @include hyphens(manual);
   }
+
   a {
     color: $color-text;
     text-decoration: none;
@@ -60,6 +65,7 @@ body {
       background-image: linear-gradient(transparent, transparent 4px, $color-link 4px, $color-link);
     }
   }
+
   a.icon {
     background: none;
 
@@ -67,6 +73,7 @@ body {
       color: $color-link;
     }
   }
+
   h1 a,
   .h1 a,
   h2 a,
@@ -78,6 +85,7 @@ body {
     color: inherit;
     text-decoration: none;
   }
+
   h1 a:hover,
   .h1 a:hover,
   h2 a:hover,
@@ -87,6 +95,7 @@ body {
   h6 a:hover {
     @include underline(6px, $color-link);
   }
+
   h6 {
     a {
       background: none;
@@ -94,12 +103,14 @@ body {
       text-decoration: none;
     }
   }
+
   h6 {
     a:hover {
       @include underline(6px, $color-link);
     }
   }
 }
+
 @media (min-width: 540px) {
   .image-wrap {
     flex-direction: row;
@@ -109,19 +120,25 @@ body {
       flex: 1 0 35%;
       margin-right: 2rem;
     }
+
     p {
       flex: 1 0 65%;
     }
   }
 }
+
 .max-width {
   max-width: $page-width;
 }
-@media (max-width: 480px) {  // smaller margins at smaller screen widths
+
+@media (max-width: 480px) {
+
+  // smaller margins at smaller screen widths
   .px3 {
     padding-right: 1rem;
     padding-left: 1rem;
   }
+
   .my4 {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -160,6 +177,7 @@ pre {
   position: relative;
 
   .code-copy-btn {
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -171,7 +189,7 @@ pre {
     font-size: 0.9em;
     line-height: 1.7;
     color: #fff;
-    background-color: #8c8c8c;
+    background-color: rgba(140, 140, 140, 0.5);
     min-width: 60px;
     text-align: center;
     cursor: pointer;
@@ -179,7 +197,7 @@ pre {
   }
 
   .code-copy-btn:hover {
-    background-color: #666;
+    background-color: rgba(140, 140, 140, 0.5);
     color: #2bbc8a;
   }
 
@@ -188,6 +206,10 @@ pre {
     padding: 0;
     border: none;
   }
+}
+
+pre:hover .code-copy-btn {
+  display: inline-block;
 }
 
 code {
@@ -200,7 +222,7 @@ code {
 
 .highlight {
 
-  & > div {
+  &>div {
     border-radius: 2px;
     -webkit-border-radius: 2px;
   }
