@@ -1,13 +1,19 @@
-#tag-cloud {
-  .tag-cloud-title {
+#tags {
+  .tag-title {
     color: $color-meta;
   }
-  .tag-cloud-tags {
+  .tag-list {
     clear: both;
     text-align: center;
     a {
       display: inline-block;
       margin: 10px;
     }
+  }
+}
+
+.tags {
+  a {
+    margin: 10px;
   }
 }

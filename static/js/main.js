@@ -113,3 +113,50 @@ $(document).ready(function() {
     }
   }
 });
+
+// img overlay
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img[src^="/img/"]');
+
+  images.forEach(img => {
+    // 创建一个新的 <a> 元素
+    const link = document.createElement('a');
+    link.href = img.src;
+    link.className = 'enlarge-image';
+    link.style.cursor = 'pointer'; // 可选，使鼠标悬浮在图片上时显示指针光标
+
+    // 将 <img> 插入到 <a> 内，并替换原来的 <img> 位置
+    img.parentNode.insertBefore(link, img);
+    link.appendChild(img);
+
+    // 为新创建的 <a> 元素添加点击事件监听器
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      const overlay = document.createElement('div');
+      overlay.className = 'overlay';
+
+      const overlayImage = document.createElement('img');
+      overlayImage.src = this.href;
+      overlayImage.style.transform = 'scale(1)'
+      overlay.appendChild(overlayImage);
+
+      document.body.appendChild(overlay);
+
+      // 添加鼠标滚轮事件监听器
+      overlayImage.addEventListener('wheel', function(event) {
+        event.preventDefault();
+        let scale = event.deltaY < 0 ? 1.1 : 0.9;
+        let currentScale = parseFloat(this.style.transform.match(/scale\(([^)]+)\)/)[1]);
+        overlayImage.style.transform = `scale(${scale * (parseFloat(overlayImage.style.transform.match(/scale\((.*)\)/)[1]) || 1)})`;
+        this.style.transform = `scale(${currentScale * scale})`;
+      });
+
+      // 点击覆盖层关闭
+      overlay.addEventListener('click', function() {
+        this.remove();
+      });
+    });
+  });
+});
+

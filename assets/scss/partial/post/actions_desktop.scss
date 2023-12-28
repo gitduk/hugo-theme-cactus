@@ -1,9 +1,10 @@
 #header-post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   position: fixed;
-  top: 2rem;
-  right: 0;
-  display: inline-block;
-  float: right;
+  top: 10rem;
+  right: 15rem;
   z-index: 100;
 
   a {
@@ -18,6 +19,7 @@
       color: $color-link;
     }
   }
+
   nav {
     ul {
       display: block;
@@ -37,6 +39,7 @@
       }
     }
   }
+
   nav > ul {
     margin-block-end: 1em;
 
@@ -58,6 +61,7 @@
       margin-right: 0;
     }
   }
+
   #menu-icon {
     float: right;
     margin-right: 2rem;
@@ -67,6 +71,7 @@
       color: $color-accent-1;
     }
   }
+
   #menu-icon-tablet {
     float: right;
     margin-right: 2rem;
@@ -76,6 +81,7 @@
       color: $color-accent-1;
     }
   }
+
   #top-icon-tablet {
     position: fixed;
     right: 2rem;
@@ -87,13 +93,16 @@
       color: $color-accent-1;
     }
   }
+
   .active {
     color: $color-accent-1;
   }
+
   #menu {
     visibility: hidden;
     margin-right: 2rem;
   }
+
   #nav {
     color: $color-accent-1;
     letter-spacing: .01em;
@@ -124,21 +133,7 @@
       }
     }
   }
-  #actions {
-    float: right;
-    margin-top: 2rem;
-    margin-right: 2rem;
-    width: 100%;
-    text-align: right;
 
-    ul {
-      display: block;
-    }
-    .info {
-      display: block;
-      font-style: italic;
-    }
-  }
   #share {
     clear: both;
     padding-top: 1rem;
@@ -150,15 +145,14 @@
       margin: 0;
     }
   }
+
   #toc {
-    float: right;
-    clear: both;
     overflow: auto;
-    margin-top: 1rem;
-    padding-right: 2rem;
-    max-width: 20em;
+    margin-top: 0rem;
+    margin-right: 0rem;
+    max-width: 25em;
     max-height: calc(95vh - 7rem);
-    text-align: right;
+    text-align: left;
 
     a:hover {
       color: $color-link;
@@ -200,9 +194,9 @@
     .toc-number {
       display: none;
     }
-// smartphone + phapblet
   }
 }
+
 @media screen and (max-width: 500px) {
   #header-post {
     display: none;
@@ -219,6 +213,7 @@
     }
   }
 }
+
 @media screen and (max-width: 1199px) {
   #header-post {
     #toc {
@@ -226,6 +221,7 @@
     }
   }
 }
+
 @media screen and (min-width: 900px) {
   #header-post {
     #menu-icon-tablet {
@@ -236,6 +232,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1199px) {
   #header-post {
     #actions {
@@ -254,3 +251,4 @@
     }
   }
 };
+

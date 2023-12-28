@@ -24,3 +24,12 @@
     </ul>
   </div>
 </header>
+<script>
+function adjustForScrollbar() {
+  const rootFontSize = window.getComputedStyle(document.documentElement).fontSize;
+  const autoMargin = Math.max(0, (window.innerWidth - 800) / 2);
+  document.documentElement.style.setProperty('--auto-margin', `${autoMargin}px`);
+}
+adjustForScrollbar();
+window.addEventListener('resize', adjustForScrollbar);
+</script>

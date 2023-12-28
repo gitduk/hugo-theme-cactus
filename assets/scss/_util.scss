@@ -199,8 +199,8 @@
   margin-right: auto;
 }
 .mx-auto {
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: var(--auto-margin);
+  margin-left: var(--auto-margin);
 }
 .p0 {
   padding: 0;

@@ -4,9 +4,9 @@
 
 <body class="max-width mx-auto px3 ltr">
   <div class="content index py4">
-
+    {{ partial "header.html" . }}
+    <br>
     {{ partial "page_nav.html" . }}
-
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
       <header>
         <h1 class="posttitle" itemprop="name headline">
@@ -46,7 +46,7 @@
             <i class="fas fa-archive"></i>
             {{ range $index, $value := . }}
             {{ if gt $index 0 }} {{ print ", " }} {{ end }}
-            <a class="category-link" href="{{ " /categories/" | relLangURL }}{{ $value | urlize }}">{{ $value }}</a>
+            <a class="category-link" href="{{ "/categories/" | relLangURL }}{{ $value | urlize }}">{{ $value }}</a>
             {{ end }}
           </div>
           {{ end }}
@@ -58,7 +58,7 @@
             <i class="fas fa-tag"></i>
             {{ range $index, $value := . }}
             {{ if gt $index 0 }} {{ print ", " }} {{ end }}
-            <a class="tag-link" href="{{ " /tags/" | relLangURL }}{{ $value | urlize }}" rel="tag">{{ $value }}</a>
+            <a class="tag-link" href="{{ "/tags/" | relLangURL }}{{ $value | urlize }}" rel="tag">{{ $value }}</a>
             {{ end }}
           </div>
           {{ end }}
