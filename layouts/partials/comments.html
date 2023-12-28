@@ -1,22 +1,28 @@
-{{ if (not (isset .Site.Params "comments")) }}
-  {{ .Scratch.Set "enable_comments" false }}
-{{ else if (isset .Params "comments") }}
-  {{ .Scratch.Set "enable_comments" .Params.comments }}
-{{ else if (isset .Site.Params.Comments "enabled") }}
-  {{ .Scratch.Set "enable_comments" .Site.Params.Comments.Enabled }}
+{{ $enable_comments := false }}
+{{ with .Site.Params.comments }}
+{{ $enable_comments = . }}
 {{ else }}
-  {{ .Scratch.Set "enable_comments" true }}
+{{ with .Params.comments }}
+{{ $enable_comments = . }}
+{{ else }}
+{{ with .Site.Params.Comments }}
+{{ $enable_comments = .Enabled }}
+{{ end }}
+{{ end }}
 {{ end }}
 
-{{ $enable_comments := .Scratch.Get "enable_comments" }}
 {{ if $enable_comments }}
-  <div class="blog-post-comments">
-    {{ if (or (not (isset .Site.Params.Comments "engine")) (eq .Site.Params.Comments.Engine "disqus")) }}
-      {{ partial "comments/disqus.html" . }}
-    {{ else if eq .Site.Params.Comments.Engine "utterances" }}
-      {{ partial "comments/utterances.html" . }}
-    {{ else if eq .Site.Params.Comments.Engine "cactus_comments" }}
-      {{ partial "comments/cactus_comments.html" . }}
-    {{ end }}
-  </div>
+<div class="blog-post-comments">
+  {{ with .Site.Params.Comments.Engine }}
+  {{ if eq . "disqus" }}
+  {{ partial "comments/disqus.html" . }}
+  {{ else if eq . "utterances" }}
+  {{ partial "comments/utterances.html" . }}
+  {{ else if eq . "cactus_comments" }}
+  {{ partial "comments/cactus_comments.html" . }}
+  {{ end }}
+  {{ else }}
+  {{ partial "comments/disqus.html" . }}
+  {{ end }}
+</div>
 {{ end }}

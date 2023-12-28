@@ -1,15 +1,17 @@
 <header id="header">
   <a href="{{ .Site.BaseURL }}">
-  {{ if (isset .Site.Params "gravatar") }}
-    <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/{{ md5 .Site.Params.gravatar }}?s=100&d=identicon)"></div>
-  {{ else if (isset .Site.Params "logo") }}
-    <div id="logo" style="background-image: url({{ .Site.Params.logo | absURL }})"></div>
-  {{ else }}
+    {{ with .Site.Params.gravatar }}
+    <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/{{ md5 . }}?s=100&d=identicon)"></div>
+    {{ else }}
+    {{ with .Site.Params.logo }}
+    <div id="logo" style="background-image: url({{ . | absURL }})"></div>
+    {{ else }}
     <div id="logo" style="background-image: url({{ "images/logo.png" | absURL }})"></div>
-  {{ end}}
-  <div id="title">
-    <h1>{{ .Site.Title }}</h1>
-  </div>
+    {{ end }}
+    {{ end }}
+    <div id="title">
+      <h1>{{ .Site.Title }}</h1>
+    </div>
   </a>
   <div id="nav">
     <ul>
@@ -17,9 +19,8 @@
         <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></a>
       </li>
       {{ range .Site.Menus.main }}
-        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
       {{ end }}
     </ul>
   </div>
 </header>
-
