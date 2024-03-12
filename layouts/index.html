@@ -42,17 +42,19 @@
       "Writings" }}</a></span>
   {{ with .Site.Params.tagsOverview }}
   {{ if and (eq . true) (gt (len $.Site.Taxonomies.tags) 0) }}
+
   <span class="h2">Topics</span>
   <span class="tags">
-    {{ $AllRegularPagesCount := len $.Site.RegularPages }}
     {{ range $elem := $.Site.Taxonomies.tags.Alphabetical }}
-    <a class="tag-list-link" style="position: relative; font-size: 0.8rem" href="{{ $elem.Page.Permalink }}">
-      {{- $elem.Name -}}
-      <span style="position: absolute; top: -5px; right: -12px; color: gray; font-size: 0.6rem;">
-        {{ len $elem.Pages }}
-      </span></a>
+    <a class="tag-list-link" style="position: relative; font-size: {{ (add 0.7 (mul 0.1 (len .Pages))) }}rem" href="{{ $elem.Page.Permalink }}">
+      {{- .Name -}}
+      <span style="font-size: 0.6rem; color: gray;">
+        {{ len .Pages }}
+      </span>
+    </a>
     {{ end }}
   </span>
+
   <span class="h2">Most recent</span>
   {{ end }}
   {{ end }}
