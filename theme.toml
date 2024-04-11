@@ -8,6 +8,10 @@ tags = ["blog", "responsive", "clean"]
 features = ["mathjax", "customizable", "color"]
 min_version = "0.55"
 
+[main]
+    [main.build]
+        transpiler = "libsass"
+
 # If the theme has a single author
 [author]
     name = "Zeran Wu"
